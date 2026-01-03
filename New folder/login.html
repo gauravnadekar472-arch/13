@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="shortcut icon" href="eaglelogo.png" type="image/x-icon">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login | Chat-AI</title>
+  <link rel="stylesheet" href="login.css" />
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+</head>
+<body>
+
+  <div class="login-container">
+    <h1 class="app-title">CHAT-AI</h1>
+
+
+    <!-- Mobile login -->
+    <form id="loginForm">
+      <input type="tel" id="mobile" placeholder="Mobile Number" required />
+      <button type="submit">Login</button>
+    </form>
+
+    <div class="divider">OR</div>
+
+    <!-- Google login -->
+    <button class="google-btn" id="googleLogin">
+      Login with Google
+    </button>
+
+    <p class="signup-link">
+      New user? <a href="signup.html">Create account</a>
+    </p>
+  </div>
+
+  <!-- reCAPTCHA container for Firebase phone login -->
+  <div id="recaptcha-container"></div>
+
+<script src="login.js"></script>
+
+</body>
+</html>

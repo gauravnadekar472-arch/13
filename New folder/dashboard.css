@@ -1,0 +1,98 @@
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:Poppins, sans-serif;
+}
+
+body{
+  min-height:100vh;
+  background:linear-gradient(-45deg,#0f2027,#203a43,#2c5364,#1b1f3b);
+  background-size:400% 400%;
+  animation:bg 12s ease infinite;
+  color:#fff;
+}
+
+@keyframes bg{
+  0%{background-position:0% 50%}
+  50%{background-position:100% 50%}
+  100%{background-position:0% 50%}
+}
+
+.admin-login{
+  height:100vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+}
+
+.admin-login input{
+  padding:10px;
+  border-radius:10px;
+  border:none;
+  margin-bottom:10px;
+}
+
+.admin-login button{
+  padding:10px 20px;
+  border:none;
+  border-radius:10px;
+  background:#00fff0;
+  font-weight:bold;
+}
+
+.dashboard{
+  display:none;
+  padding:10px;
+}
+
+header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:10px;
+}
+
+.glow{
+  text-shadow:0 0 15px #00fff0;
+}
+
+header button{
+  background:#00fff0;
+  border:none;
+  padding:6px 10px;
+  border-radius:8px;
+}
+
+.user-card{
+  background:#000c;
+  border-radius:14px;
+  padding:10px;
+  margin-bottom:10px;
+  box-shadow:0 0 10px #00fff055;
+}
+
+.status{
+  font-size:12px;
+  margin-top:4px;
+}
+
+.active{ color:#00ff88 }
+.expired{ color:#ff5555 }
+
+.actions{
+  margin-top:8px;
+  display:flex;
+  gap:8px;
+}
+
+.actions button{
+  flex:1;
+  border:none;
+  padding:6px;
+  border-radius:8px;
+  font-size:12px;
+}
+.delete{ background:#ff4444 }
+.toggle{ background:#ffaa00 }

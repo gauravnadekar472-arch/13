@@ -1,0 +1,328 @@
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:Poppins, sans-serif;
+}
+
+body{
+  min-height:100dvh;   /* mobile-safe viewport */
+  background:linear-gradient(-45deg,#0f2027,#203a43,#2c5364,#1b1f3b);
+  background-size:400% 400%;
+  animation:bgMove 12s ease infinite;
+  display:flex;
+  flex-direction:column;
+  overflow:hidden;
+}
+
+@keyframes bgMove{
+  0%{background-position:0% 50%}
+  50%{background-position:100% 50%}
+  100%{background-position:0% 50%}
+}
+
+/* Header - fixed at top */
+.top-bar{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height:55px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 12px;
+  color:#00fff0;
+  background:rgba(0,0,0,0.3);
+  flex-shrink:0;
+  z-index:10;
+}
+.top-bar button{
+  background:none;
+  border:none;
+  color:#fff;
+  font-size:20px;
+  cursor:pointer;
+}
+.glow{
+  text-shadow:0 0 15px #00fff0;
+}
+
+/* Drawer */
+.drawer{
+  position:fixed;
+  left:-260px;
+  top:0;
+  width:260px;
+  height:100%;
+  background:#000c;
+  padding:15px;
+  transition:.3s;
+  z-index:50; /* increased for proper overlay */
+  display:flex;
+  flex-direction:column;
+  overflow-y:auto; /* scrollable content */
+}
+.drawer.show{ left:0 }
+.drawer input{
+  width:100%;
+  padding:8px;
+  margin:10px 0;
+  border-radius:8px;
+  border:none;
+  flex-shrink:0;
+}
+.drawer ul{
+  list-style:none;
+  color:#fff;
+  font-size:14px;
+  flex:1;
+  overflow-y:auto;
+  margin:0;
+  padding:0;
+}
+.drawer li{
+  padding:6px 0;
+  border-bottom:1px solid #333;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  cursor:pointer;
+}
+.drawer button{
+  margin-top:10px;
+  width:100%;
+  padding:8px;
+  border-radius:10px;
+  border:none;
+  background:#00fff0;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+/* Add Project button fix */
+#addProjectBtn {
+  display:block;
+  margin-top:10px;
+  width:100%;
+  padding:8px;
+  border-radius:10px;
+  border:none;
+  background:#00fff0;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+/* ================= CHAT AREA (FIXED) ================= */
+.chat-area{
+  height: calc(100svh - 55px - 70px); /* header + input bar */
+  margin-top: 55px;
+
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  padding: 12px 12px 140px; /* 👈 thinking + keyboard safe */
+
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+
+  scrollbar-width: thin;
+  scrollbar-color: #00fff0 #222;
+}
+
+/* ================= MESSAGES ================= */
+.msg{
+  max-width:80%;
+  padding:12px;
+  padding-right:70px;   /* 👈 copy + speaker ke liye jagah */
+  border-radius:12px;
+  margin-bottom:10px;
+  font-size:14px;
+  position:relative;
+  line-height:1.4;
+  word-wrap: break-word;
+}
+
+.user{
+  background:#00fff0;
+  align-self:flex-end;
+  margin-left:auto;
+  color:#000;
+}
+
+.ai{
+  background:#222;
+  color:#fff;
+}
+
+/* ================= COPY / SPEAKER ================= */
+.copy{
+  position:absolute;
+  top:6px;
+  right:10px;
+  font-size:12px;
+  cursor:pointer;
+  color:#00fff0;
+}
+
+/* speaker icon (second icon) */
+.copy:nth-of-type(2){
+  right:40px;
+}
+
+
+/* 3-dot menu for messages */
+.three-dot{
+  position:absolute;
+  top:5px;
+  right:25px;
+  cursor:pointer;
+  color:#00fff0;
+  font-weight:bold;
+  font-size:16px;
+}
+
+/* Message dropdown menu */
+.msg-menu{
+  position:absolute;
+  top:25px;
+  right:5px;
+  background:rgba(0,0,0,0.9);
+  display:flex;
+  flex-direction:column;
+  border-radius:8px;
+  overflow:hidden;
+  z-index:50;
+  min-width:100px;
+  box-shadow:0 0 8px #00fff0;
+}
+.msg-menu button{
+  background:none;
+  border:none;
+  color:#00fff0;
+  padding:8px 10px;
+  cursor:pointer;
+  text-align:left;
+  font-size:14px;
+  font-weight:bold;
+  transition:0.2s;
+}
+.msg-menu button:hover{
+  background:rgba(0,255,240,0.1);
+  color:#fff;
+}
+
+/* Input Bar - fixed at bottom */
+.input-bar{
+  position: fixed;
+  bottom: 0;
+  width:100%;
+  display:flex;
+  align-items:center;
+  padding:8px;
+  background:#000a;
+  z-index:20;
+}
+.input-bar input{
+  flex:1;
+  padding:10px;
+  border-radius:20px;
+  border:none;
+  margin:0 6px;
+}
+.input-bar button{
+  background:#00fff0;
+  border:none;
+  border-radius:50%;
+  width:38px;
+  height:38px;
+  cursor:pointer;
+}
+
+/* Profile Popup */
+#profilePopup{
+  position:fixed;
+  top:60px;
+  right:15px;
+  background:#111c;
+  color:#fff;
+  padding:15px;
+  border-radius:12px;
+  z-index:60; /* above drawer and top-bar */
+  width:220px;
+  display:flex;
+  flex-direction:column;
+  gap:6px;
+}
+#profilePopup button{
+  background:#00fff0;
+  border:none;
+  border-radius:8px;
+  padding:6px;
+  cursor:pointer;
+  font-weight:bold;
+}
+#profilePopup button:hover{
+  background:#00b8b8;
+}
+
+/* Drawer Logo */
+.drawer-logo{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  margin-bottom:15px;
+}
+.drawer-logo img{
+  width:70px;
+  height:70px;
+  object-fit:contain;
+  filter: drop-shadow(0 0 8px #00fff0);
+}
+.drawer-logo h2{
+  margin-top:6px;
+  font-size:16px;
+  color:#00fff0;
+  text-shadow:0 0 10px #00fff0;
+  letter-spacing:1px;
+}
+
+/* ================= THINKING (FIXED) ================= */
+.msg.thinking{
+  align-self: flex-start;
+  margin-bottom: 16px; /* 👈 footer se gap */
+}
+
+.thinking{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  padding: 12px 18px;
+  max-width: 280px;
+
+  background: rgba(0, 255, 240, 0.12);
+  border-radius: 20px;
+
+  box-shadow: 0 0 18px rgba(0, 255, 240, 0.6);
+  color: #00fff0;
+
+  font-size: 14px;
+  font-weight: 500;
+
+  animation: neonFade 1.5s ease-in-out infinite;
+}
+
+@keyframes blink {
+  0%, 80%, 100% { transform: scale(0); opacity: 0.2; }
+  40% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes neonFade {
+  0%, 100% { box-shadow: 0 0 15px rgba(0,255,240,0.5); }
+  50% { box-shadow: 0 0 30px rgba(0,255,240,0.8); }
+}

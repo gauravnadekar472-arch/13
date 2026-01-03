@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Admin Dashboard | Chat-AI</title>
+  <link rel="stylesheet" href="dashboard.css" />
+</head>
+<body>
+
+<div class="admin-login" id="adminLogin">
+  <h2>Founder Login</h2>
+  <input type="password" id="adminPass" placeholder="Admin Password" />
+  <button onclick="checkAdmin()">Login</button>
+</div>
+
+<div class="dashboard" id="dashboard">
+  <header>
+    <h1 class="glow">CHAT-AI DASHBOARD</h1>
+    <button onclick="downloadExcel()">⬇ Excel</button>
+  </header>
+
+  <div class="user-list" id="userList"></div>
+</div>
+
+<script src="dashboard.js"></script>
+</body>
+</html>

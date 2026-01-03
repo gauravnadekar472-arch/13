@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="shortcut icon" href="eaglelogo.png" type="image/x-icon">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sign Up | Chat-AI</title>
+  <link rel="stylesheet" href="signup.css" />
+
+  <!-- ✅ Firebase COMPAT SDK (v9 compat = v8 style) -->
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+</head>
+<body>
+
+  <div class="signup-container">
+    <h1 class="app-title">CHAT-AI</h1>
+
+    <form id="signupForm">
+      <input type="text" id="name" placeholder="Full Name" required />
+      <input type="tel" id="mobile" placeholder="Mobile Number" required />
+      <input type="email" id="email" placeholder="Email (optional)" />
+      <button type="submit">Create Account</button>
+    </form>
+
+    <div class="divider">OR</div>
+
+    <button class="google-btn" id="googleSignup">
+      Sign up with Google
+    </button>
+
+    <p class="login-link">
+      Already have an account? <a href="login.html">Login</a>
+    </p>
+  </div>
+
+  <!-- ✅ REQUIRED for Phone Auth -->
+  <div id="recaptcha-container"></div>
+
+  <!-- ❌ type="module" HATA DIYA -->
+  <script src="signup.js"></script>
+</body>
+</html>
