@@ -1,6 +1,6 @@
 // ================= CONFIG =================
-const CHAT_API_URL = "https://quronai112.onrender.com";
-const IMAGE_API_URL = "https://quronai112.onrender.com";
+const CHAT_API_URL = "https://one2-bd7o.onrender.com/api/chat";
+const IMAGE_API_URL = "https://one2-bd7o.onrender.com/api/chat"; // (same for now)
 
 // ================= ELEMENTS =================
 const menuBtn = document.getElementById("menuBtn");

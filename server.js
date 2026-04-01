@@ -5,9 +5,11 @@ import rateLimit from "express-rate-limit";
 import OpenAI from "openai";
 
 dotenv.config();
+
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+/* ===== OPENAI ===== */
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY
 });
@@ -18,14 +20,14 @@ app.use(rateLimit({
   max: 10
 }));
 
-/* ===== CORS FIX (IMPORTANT 🔥) */
+/* ===== CORS ===== */
 const allowedOrigins = [
   "https://ts-eagleai.netlify.app",
   "https://quronai.netlify.app"
 ];
 
 app.use(cors({
-  origin: function(origin, callback) {
+  origin: function (origin, callback) {
     if (!origin || allowedOrigins.includes(origin)) {
       callback(null, true);
     } else {
@@ -38,7 +40,7 @@ app.use(cors({
 
 app.use(express.json());
 
-/* ===== BASIC MEMORY ===== */
+/* ===== MEMORY ===== */
 const chats = {};
 
 /* ===== CHAT ROUTE ===== */
@@ -59,22 +61,24 @@ app.post("/api/chat", async (req, res) => {
       { role: "user", content: message }
     ];
 
-    const response = await openai.chat.completions.create({
-      model: "gpt-4o-mini",
-      messages,
-      max_tokens: 400
+    /* ===== OPENAI RESPONSE ===== */
+    const response = await openai.responses.create({
+      model: "gpt-4.1-mini",
+      input: messages.map(m => `${m.role}: ${m.content}`).join("\n")
     });
 
-    const reply = response.choices[0].message.content;
+    /* ✅ CORRECT RESPONSE PARSE */
+    const reply = response.output[0].content[0].text;
 
-    // Save memory
+    /* ===== SAVE MEMORY ===== */
     history.push({ role: "user", content: message });
     history.push({ role: "assistant", content: reply });
 
     res.json({ reply });
 
   } catch (err) {
-    console.error("Chat Error:", err);
+    console.error("FULL ERROR:", err.message);
+    console.error(err);
     res.status(500).json({ reply: "⚠️ Server busy, try again 😅" });
   }
 });
