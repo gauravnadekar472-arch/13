@@ -1,6 +1,6 @@
 // ================= CONFIG =================
-const CHAT_API_URL = "https://abcc-p4lf.onrender.com";
-const IMAGE_API_URL = "https://abcc-p4lf.onrender.com";
+const CHAT_API_URL = "https://quronai112.onrender.com";
+const IMAGE_API_URL = "https://quronai112.onrender.com";
 
 // ================= ELEMENTS =================
 const menuBtn = document.getElementById("menuBtn");
